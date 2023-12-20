@@ -1,3 +1,5 @@
+import Input from "@/components/input"
+
 const Auth = () => {
     return (
         /* Background Image */
@@ -16,7 +18,7 @@ const Auth = () => {
                         </h2>
                         {/* Sign-In Input Section */}
                         <div className="flex flex-col gap-4">
-                            
+                            <Input />
                         </div>
                     </div>
                 </div>
