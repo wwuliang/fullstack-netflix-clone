@@ -9,3 +9,64 @@ datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
 }
+
+model User { // Data stored in each user
+  id String @id @default(auto()) @map("_id") @db.ObjectId 
+  name String                        // User name
+  image String?                      // Profile picture/image
+  email String? @unique              // Email
+  emailVerified DateTime?            // Optional verified email
+  hashedPassword String?             // Optional password
+  createdAt DateTime @default(now()) // User created date and time
+  updatedAt DateTime @updatedAt      // User updated information
+  favoriteIds String[] @db.ObjectId  // An array of the user's favorite shows
+  sessions Session[]                 // An array of the user's sessions
+  accounts Account[]                 // An array of the user's google accounts used to sign in
+}
+
+model Account { // Data stored in a user's Google account used to sign to the platform
+  id String @id @default(auto()) @map("_id") @db.ObjectId 
+  userId String @db.ObjectId 
+  type String
+  provider String
+  providerAccountId String
+  refresh_token String? @db.String
+  access_token String? @db.String
+  expires_at Int?
+  token_type String?
+  scope String?
+  id_token String? @db.String
+  session_state String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@unique([provider,providerAccountId])
+}
+
+model Session { // Session for the time period that the user is logged in for
+  id String @id @default(auto()) @map("_id") @db.ObjectId 
+  sessionToken String @unique
+  userId String @db.ObjectId
+  expires DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  id String @id @default(auto()) @map("_id") @db.ObjectId 
+  identifier String
+  token String @unique
+  expires DateTime
+
+  @@unique([identifier, token])
+}
+
+model Movie { // Data for movie
+  id String @id @default(auto()) @map("_id") @db.ObjectId 
+  title String
+  description String
+  videoUrl String
+  thumbnailUrl String
+  genre String
+  duration String
+  rating String // Optional [NOT FROM VIDEO]
+}
