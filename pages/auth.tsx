@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useCallback, useState } from 'react';
 import Input from "@/components/input"
 
@@ -10,7 +11,11 @@ const Auth = () => {
     
     const toggleVariant = useCallback(() => {
         setVariant((currentVariant) => currentVariant === 'login' ? 'register' : 'login')
-    }, [])
+    }, []);
+
+    const register = useCallback(async () => {
+
+    }, []);
 
     return (
         /* Background Image */
