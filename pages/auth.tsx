@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 
 const Auth = () => {
     const router = useRouter();
+
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
@@ -62,12 +63,14 @@ const Auth = () => {
                         </h2>
                         {/* Sign-In Input Section */}
                         <div className="flex flex-col gap-4">
-                            <Input 
-                                id="name"
-                                onChange={(ev: any) => {setName(ev.target.value);}}
-                                value={name}
-                                label="Username"
-                            />
+                            {variant === 'register' && (
+                                <Input 
+                                    id="name"
+                                    onChange={(ev: any) => {setName(ev.target.value);}}
+                                    value={name}
+                                    label="Username"
+                                />
+                            )}
                             <Input 
                                 id="email"
                                 onChange={(ev: any) => {setEmail(ev.target.value);}}
@@ -84,7 +87,7 @@ const Auth = () => {
                             />
                         </div>
                         <button onClick={variant === 'login' ? login : register} className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
-                            Login
+                            {variant === 'login' ? 'Login' : 'Register'}
                         </button>
                         <p className="text-neutral-500 mt-12">
                             {variant === 'login' ? 'First time using Netflix?' : 'Already have an account?'}
