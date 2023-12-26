@@ -1,12 +1,29 @@
 import axios from 'axios';
 import { useCallback, useState } from 'react';
-import Input from "@/components/input";
-import { signIn } from 'next-auth/react';
+import { NextPageContext } from 'next';
+import { getSession, signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
-
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 
+import Input from "@/components/input";
+
+export async function getServerSideProps(context: NextPageContext) {
+    const session = await getSession(context);
+  
+    if (session) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        }
+      }
+    }
+  
+    return {
+      props: {}
+    }
+  }
 
 const Auth = () => {
     const router = useRouter();
@@ -30,7 +47,7 @@ const Auth = () => {
                 callbackUrl: '/'
             });
 
-            router.push('/');
+            router.push('/profiles');
         } catch (error) {
             console.log(error);
         }
@@ -41,7 +58,7 @@ const Auth = () => {
             await axios.post('/api/register', {
                 email,
                 name,
-                password,
+                password
             });
 
             login();
@@ -70,24 +87,25 @@ const Auth = () => {
                             {variant === 'register' && (
                                 <Input 
                                     id="name"
-                                    onChange={(ev: any) => {setName(ev.target.value);}}
-                                    value={name}
+                                    type="text"
                                     label="Username"
+                                    value={name}
+                                    onChange={(ev: any) => setName(ev.target.value)} 
                                 />
                             )}
                             <Input 
                                 id="email"
-                                onChange={(ev: any) => {setEmail(ev.target.value);}}
-                                value={email}
-                                label="Email"
                                 type="email"
+                                label="Email address or phone number"
+                                value={email}
+                                onChange={(ev: any) => setEmail(ev.target.value)} 
                             />
                             <Input 
-                                id="password"
-                                onChange={(ev: any) => {setPassword(ev.target.value);}}
+                                type="password" 
+                                id="password" 
+                                label="Password" 
                                 value={password}
-                                label="Password"
-                                type="password"
+                                onChange={(ev: any) => setPassword(ev.target.value)} 
                             />
                         </div>
                         {/* Login / Register Button */}
@@ -97,11 +115,11 @@ const Auth = () => {
                         {/* OAuth Buttons */}
                         <div className="flex flex-row items-center gap-4 mt-8 justify-center">
                             {/* Google OAuth */}
-                            <div onClick={() => signIn('google', { callbackUrl: '/' })} className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition">
+                            <div onClick={() => signIn('google', { callbackUrl: '/profiles' })} className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition">
                                 <FcGoogle size={30}/>
                             </div>
                             {/* Github OAuth */}
-                            <div onClick={() => signIn('github', { callbackUrl: '/' })} className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition">
+                            <div onClick={() => signIn('github', { callbackUrl: '/profiles' })} className="w-10 h-10 bg-white rounded-full flex items-center justify-center cursor-pointer hover:opacity-80 transition">
                                 <FaGithub size={30}/>
                             </div>
                         </div>
