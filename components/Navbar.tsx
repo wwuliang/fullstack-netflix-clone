@@ -66,15 +66,15 @@ const Navbar = () => {
                 <div className="flex flex-row ml-auto gap-7 items-center">
                     {/* Search */}
                     <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
-                        <IoSearch className="text-2xl"/>
+                        <IoSearch className="text-xl"/>
                     </div>
                     {/* Notifications */}
                     <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition">
-                        <FaRegBell className="text-2xl"/>
+                        <FaRegBell className="text-xl"/>
                     </div>
                     {/* Profile (Mobile Compatible) */}
                     <div onMouseEnter={() => setShowAccountMenu(true)} onMouseLeave={() => setShowAccountMenu(false)} className="flex flex-row items-center gap-2 cursor-pointer relative">
-                        <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
+                        <div className="w-4 h-4 lg:w-8 lg:h-8 rounded-md overflow-hidden">
                             <img src="/images/default-blue.png" alt="Netflix Profile Image"/>
                         </div>
                         <RiArrowDownSFill className={`text-xl text-white transition ${showAccountMenu ? 'rotate-180' : 'rotate-0'}`}/>
