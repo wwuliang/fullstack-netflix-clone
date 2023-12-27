@@ -68,5 +68,5 @@ model Movie { // Data for movie
   thumbnailUrl String
   genre String
   duration String
-  rating String // Optional [NOT FROM VIDEO]
+  // rating String // Optional [NOT FROM VIDEO]
 }
