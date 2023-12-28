@@ -43,7 +43,7 @@ const Navbar = () => {
 
     return (
         <nav className="w-full fixed z-40">
-            <div className={`px-4 md:px-16 py-6 flex flex-row items-center transition duration-500 ${showBackground ? 'bg-zinc-900 bg-opacity-90' : ''}`}>
+            <div className={`px-4 md:px-16 py-6 flex flex-row items-center transition duration-500 ${showBackground ? 'bg-black bg-opacity-100' : 'bg-gradient-to-b from-black to-transparent'}`}>
                 <img className="h-4 lg:h-7" src="/images/logo.png" alt="Netflix Logo" />
                 {/* Navigation for Streaming */}
                 <div className="flex-row ml-8 gap-7 hidden lg:flex">
