@@ -80,7 +80,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
                                 hover:bg-neutral-300
                             " 
                             onClick={() => {}}>
-                                <FaPlay />
+                                <FaPlay className="text-xs lg:text-lg" style={{ transform: 'translateX(2px)' }}/>
                         </div>
                     </div>
                     <p className="text-green-400 font-semibold mt-4">
