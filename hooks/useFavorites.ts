@@ -16,4 +16,4 @@ const useFavorites = () => {
     }
 };
 
-export default useFavorites();
+export default useFavorites;
