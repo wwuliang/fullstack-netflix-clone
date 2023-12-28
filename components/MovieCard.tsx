@@ -83,7 +83,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
                             onClick={() => {}}>
                                 <FaPlay className="text-xs lg:text-lg" style={{ transform: 'translateX(2px)' }}/>
                         </div>
-                        <FavoriteButton movieId={data?.id} />
+                        <FavoriteButton movieId={data?.id}/>
                     </div>
                     <p className="text-green-400 font-semibold mt-4">
                         New <span className="text-white">2023</span>
