@@ -81,6 +81,11 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
                             poster={data?.thumbnailUrl} 
                             src={data?.videoUrl}>
                         </video>
+                        {/* <iframe className='video'
+                                title='Youtube player'
+                                sandbox='allow-same-origin allow-forms allow-popups allow-scripts allow-presentation'
+                                src={`https://youtube.com/embed/${data?.videoUrl}?autoplay=1`}>
+                        </iframe> */}
                         <div 
                             className="
                                 cursor-pointer

@@ -17,6 +17,11 @@ const Watch = () => {
                 </p>
             </nav>
             <video autoPlay controls className="h-full w-full" src={data?.videoUrl}></video>
+            {/* <iframe className='video'
+                    title='Youtube player'
+                    sandbox='allow-same-origin allow-forms allow-popups allow-scripts allow-presentation'
+                    src={`https://youtube.com/embed/${data?.videoUrl}?autoplay=1`}>
+            </iframe> */}
         </div>
     )
 }
