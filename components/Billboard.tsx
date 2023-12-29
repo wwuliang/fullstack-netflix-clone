@@ -15,6 +15,7 @@ const Billboard = () => {
     return (
         <div className="relative h-[56.25vw]">
             <video className="w-full h-[56.25vw] object-cover brightness-[60%]" autoPlay muted loop poster={data?.thumbnailUrl} src={data?.videoUrl}></video>
+            <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-black via-transparent to-transparent"></div>
             {/* <iframe className='video'
                     title='Youtube player'
                     sandbox='allow-same-origin allow-forms allow-popups allow-scripts allow-presentation'
