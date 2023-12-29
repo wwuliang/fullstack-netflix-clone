@@ -4,8 +4,7 @@ import { NextPageContext } from 'next';
 import { getSession, signIn } from 'next-auth/react';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
-
-import Input from "@/components/Input";
+import Input from '@/components/Input';
 
 const Auth = () => {
     const [email, setEmail] = useState('');
