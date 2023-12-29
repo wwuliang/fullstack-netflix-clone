@@ -1,3 +1,5 @@
+NOTE: The deployment of this project does not currently work as there is an issue with OAuth and mongoDB during deployment. I will provide a video within this README file for a walkthrough of how the website works.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
